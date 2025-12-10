@@ -23,13 +23,21 @@
   <ion-card
     class="recipe-card"
     *ngFor="let recipe of results"
-    [routerLink]="['/recipe-details', recipe.id]"
   >
     <img src="{{ recipe.image }}" alt="{{ recipe.title }}" class="recipe-image" />
 
    <ion-card-header>
         <ion-card-title>{{ recipe.title }}</ion-card-title>
       </ion-card-header>
+
+   <ion-card-content>
+      <ion-button
+        size="small"
+        [routerLink]="['/recipe-details', recipe.id]"
+      >
+        DETAILS
+      </ion-button>
+    </ion-card-content>
 
   </ion-card>
 </div>
