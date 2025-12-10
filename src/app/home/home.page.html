@@ -6,6 +6,8 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content [fullscreen]="true" class="ion-padding">
+
  <ion-searchbar
     [(ngModel)]="searchQuery"
     placeholder="Enter ingredients">
@@ -17,21 +19,21 @@
 
 
 <!--Search results --> 
-  <ng-container *ngIf="results.length > 0">
+  <div class="search-results" *ngIf="results.length > 0">
   <ion-card
-    class="result-card"
+    class="recipe-card"
     *ngFor="let recipe of results"
     [routerLink]="['/recipe-details', recipe.id]"
   >
-    <img [src]="recipe.image" [alt]="recipe.title" />
+    <img src="{{ recipe.image }}" alt="{{ recipe.title }}" class="recipe-image" />
 
-    <div class="result-card-title">
-      {{ recipe.title }}
-    </div>
+   <ion-card-header>
+        <ion-card-title>{{ recipe.title }}</ion-card-title>
+      </ion-card-header>
+
   </ion-card>
-</ng-container>
+</div>
 
-<ion-content>
   <ion-list>
     <ion-item routerLink="/favourite">Go to Favourite</ion-item>
     <ion-item routerLink="/settings">Go to Settings</ion-item>
