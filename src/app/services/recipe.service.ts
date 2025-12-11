@@ -8,7 +8,6 @@ export interface RecipeSearchResult {
   id: number;
   title: string;
   image: string;
-  readyInMinutes?: number;
 }
 
 interface SpoonacularSearchResponse {
@@ -18,12 +17,41 @@ interface SpoonacularSearchResponse {
   totalResults: number;
 }
 
+export interface IngredientMeasure {
+  amount: number;
+  unitLong: string;
+}
+
+export interface RecipeIngredient {
+  id: number;
+  original: string;    
+  image: string;       
+  measures: {
+    us: IngredientMeasure;
+    metric: IngredientMeasure;
+  };
+}
+
+export interface RecipeStep {
+  number: number;
+  step: string;
+}
+
+export interface RecipeDetails {
+  id: number;
+  title: string;
+  image: string;
+  extendedIngredients: RecipeIngredient[];
+  analyzedInstructions: { steps: RecipeStep[] }[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
   private readonly apiUrl = environment.spoonacularUrl;
   private readonly apiKey = environment.spoonacularApiKey;
+  private readonly apiRecipeDetailsUrl = environment.spoonacularRecipeDetailsUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -42,4 +70,15 @@ export class RecipeService {
       .get<SpoonacularSearchResponse>(this.apiUrl, { params })
       .pipe(map(res => res.results));
   }
+
+  getRecipeDetails(id: number): Observable<RecipeDetails> {
+    const url = `${this.apiRecipeDetailsUrl}/${id}/information`
+
+    const params = new HttpParams()
+    .set('apiKey', this.apiKey)
+    .set('includeNutrition', false);
+
+  return this.http.get<RecipeDetails>(url, { params });
+}
+
 }

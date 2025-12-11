@@ -4,10 +4,55 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Recipe details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+
+  <ng-container *ngIf="recipe">
+
+    <ion-card>
+      <img [src]="recipe.image" [alt]="recipe.title" />
+      <ion-card-header>
+        <ion-card-title>{{ recipe.title }}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <h2>Ingredients</h2>
+
+    <ion-card *ngFor="let ing of recipe.extendedIngredients">
+      <img
+        [src]="getIngredientImageUrl(ing)"
+        [alt]="ing.original"
+      />
+
+      <ion-card-content>
+        <h3>{{ ing.original }}</h3>
+
+        <!-- For now we just show metric; need to add logic of switching to US measurement system later on -->
+        <p *ngIf="ing.measures?.metric">
+          {{ ing.measures.metric.amount }} {{ ing.measures.metric.unitLong }}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <h2>Instructions</h2>
+
+    <ion-list>
+      <ion-item *ngFor="let step of steps">
+        <ion-label>
+          <strong>{{ step.number }}.</strong>
+          {{ step.step }}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-button expand="block" color="primary">
+          Add to Favourites
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+  </ng-container>
+
 </ion-content>

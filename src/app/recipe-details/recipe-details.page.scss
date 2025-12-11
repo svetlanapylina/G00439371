@@ -1,0 +1,26 @@
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+ion-card {
+  margin-bottom: 12px;
+}
+
+ion-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+h2 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
