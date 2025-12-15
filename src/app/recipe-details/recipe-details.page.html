@@ -10,7 +10,7 @@
   <ng-container *ngIf="recipe">
 
     <ion-card>
-      <img [src]="recipe.image" [alt]="recipe.title" />
+      <img class="recipe-img" [src]="recipe.image" [alt]="recipe.title" />
       <ion-card-header>
         <ion-card-title>{{ recipe.title }}</ion-card-title>
       </ion-card-header>
@@ -20,6 +20,7 @@
 
     <ion-card *ngFor="let ing of recipe.extendedIngredients">
       <img
+        class="ingredient-img"
         [src]="getIngredientImageUrl(ing)"
         [alt]="ing.original"
       />
@@ -36,14 +37,16 @@
 
     <h2>Instructions</h2>
 
-    <ion-list>
-      <ion-item *ngFor="let step of steps">
-        <ion-label>
-          <strong>{{ step.number }}.</strong>
-          {{ step.step }}
-        </ion-label>
-      </ion-item>
-    </ion-list>
+    <div class="instructions">
+      <ion-list>
+        <ion-item *ngFor="let step of steps">
+          <ion-label>
+            <strong>{{ step.number }}.</strong>
+            {{ step.step }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
 
     <ion-card>
       <ion-card-content>
