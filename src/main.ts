@@ -4,6 +4,10 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 import { provideHttpClient } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { addIcons } from 'ionicons';
+import { home } from 'ionicons/icons';
+
+addIcons({ home });
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';

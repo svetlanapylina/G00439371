@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, IonButtons, IonIcon,} from '@ionic/angular/standalone';
 import { RecipeService, RecipeDetails, RecipeIngredient, RecipeStep, } from '../services/recipe.service';
 import { FavouritesService } from '../services/favourite.service';
 import { SettingsService, UnitSystem } from '../services/settings.service';
+import { RouterLink } from '@angular/router';
+import { home } from 'ionicons/icons';
 
 
 
@@ -13,11 +15,12 @@ import { SettingsService, UnitSystem } from '../services/settings.service';
   templateUrl: './recipe-details.page.html',
   styleUrls: ['./recipe-details.page.scss'],
   standalone: true,
-  imports: [NgIf, NgFor, IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, ]
+  imports: [NgIf, NgFor, IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton,IonButtons, IonIcon, RouterLink, ]
 })
 
 
 export class RecipeDetailsPage implements OnInit {
+  homeIcon = home;
   recipe: RecipeDetails | null = null;
   isFavourite = false;
   unitSystem: UnitSystem = 'metric';
