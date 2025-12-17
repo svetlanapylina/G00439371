@@ -4,6 +4,8 @@ import { NgIf, NgFor } from '@angular/common';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, } from '@ionic/angular/standalone';
 import { RecipeService, RecipeDetails, RecipeIngredient, RecipeStep, } from '../services/recipe.service';
 import { FavouritesService } from '../services/favourite.service';
+import { SettingsService, UnitSystem } from '../services/settings.service';
+
 
 
 @Component({
@@ -18,14 +20,20 @@ import { FavouritesService } from '../services/favourite.service';
 export class RecipeDetailsPage implements OnInit {
   recipe: RecipeDetails | null = null;
   isFavourite = false;
+  unitSystem: UnitSystem = 'metric';
+
 
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
-    private favouritesService: FavouritesService
+    private favouritesService: FavouritesService,
+    private settingsService: SettingsService
   ) {}
 
-  ngOnInit(): void {
+
+  async ngOnInit(): Promise<void> {
+    this.unitSystem = await this.settingsService.getUnitSystem();
+
     const idParam = this.route.snapshot.paramMap.get('id');
     if (!idParam) return;
 
@@ -56,4 +64,12 @@ export class RecipeDetailsPage implements OnInit {
     }
     return this.recipe.analyzedInstructions[0].steps || [];
   }
+
+  getIngredientAmountText(ing: any): string {
+    const m = this.unitSystem === 'us' ? ing.measures?.us : ing.measures?.metric;
+    if (!m) return '';
+    return `${m.amount} ${m.unitLong}`;
+  }
+
+
 }

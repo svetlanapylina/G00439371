@@ -28,10 +28,10 @@
       <ion-card-content>
         <h3>{{ ing.original }}</h3>
 
-        <!-- For now we just show metric; need to add logic of switching to US measurement system later on -->
-        <p *ngIf="ing.measures?.metric">
-          {{ ing.measures.metric.amount }} {{ ing.measures.metric.unitLong }}
+        <p>
+          {{ getIngredientAmountText(ing) }}
         </p>
+
       </ion-card-content>
     </ion-card>
 
