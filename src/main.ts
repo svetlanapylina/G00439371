@@ -6,8 +6,14 @@ import { importProvidersFrom } from '@angular/core';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { addIcons } from 'ionicons';
 import { home } from 'ionicons/icons';
+import { heart, heartOutline } from 'ionicons/icons';
 
 addIcons({ home });
+addIcons({
+  heart,
+  'heart-outline': heartOutline,
+});
+
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';

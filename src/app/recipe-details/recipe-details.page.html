@@ -57,9 +57,20 @@
 
     <ion-card>
       <ion-card-content>
-        <ion-button expand="block" color="primary" (click)="onToggleFavourite()">
+        <ion-button
+          expand="block"
+          [fill]="isFavourite ? 'solid' : 'outline'"
+          color="primary"
+          (click)="onToggleFavourite()"
+        >
+          <ion-icon
+            [name]="isFavourite ? 'heart' : 'heart-outline'"
+            slot="start"
+          ></ion-icon>
+
           {{ isFavourite ? 'Remove from Favourites' : 'Add to Favourites' }}
-        </ion-button>
+</ion-button>
+
       </ion-card-content>
     </ion-card>
 
