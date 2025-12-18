@@ -13,18 +13,31 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
 
-  <ion-item>
-    <ion-label>Units</ion-label>
-  </ion-item>
+  <h2 class="settings-title">Display Recipe Measurements In:</h2>
 
-  <ion-segment [value]="unitSystem" (ionChange)="onUnitChange($event)">
-    <ion-segment-button value="metric">
-      <ion-label>Metric</ion-label>
-    </ion-segment-button>
+ <ion-list>
+  <ion-radio-group
+    [value]="unitSystem"
+    (ionChange)="onUnitChange($event)"
+  >
+    <ion-item lines="none">
+      <ion-label>
+        <div class="radio-inline">
+          <span>Metric</span>
+          <ion-radio value="metric"></ion-radio>
+        </div>
+      </ion-label>
+    </ion-item>
 
-    <ion-segment-button value="us">
-      <ion-label>US</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+    <ion-item lines="none">
+      <ion-label>
+        <div class="radio-inline">
+          <span>US</span>
+          <ion-radio value="us"></ion-radio>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
 
 </ion-content>
