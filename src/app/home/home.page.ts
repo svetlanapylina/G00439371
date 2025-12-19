@@ -20,6 +20,7 @@ import { NgIf, NgFor } from '@angular/common';
 export class HomePage {
   searchQuery = '';
   results: RecipeSearchResult[] = [];
+  hasSearched = false;
 
 
  constructor(private recipeService: RecipeService) {}
@@ -29,16 +30,19 @@ export class HomePage {
 
     if (!query) {
       this.results = [];
+      this.hasSearched = false;
       return;
     }
 
     this.recipeService.searchRecipes(query).subscribe({
       next: (recipes) => {
         this.results = recipes;
+        this.hasSearched = true;
       },
       error: (err) => {
         console.error('Error searching recipes', err);
         this.results = [];
+        this.hasSearched = true;
       },
     });
   }
