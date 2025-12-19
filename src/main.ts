@@ -5,13 +5,13 @@ import { provideHttpClient } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { addIcons } from 'ionicons';
-import { home } from 'ionicons/icons';
-import { heart, heartOutline } from 'ionicons/icons';
+import { home, heart, heartOutline, settings } from 'ionicons/icons';
 
-addIcons({ home });
 addIcons({
+  home,
   heart,
   'heart-outline': heartOutline,
+  settings
 });
 
 
