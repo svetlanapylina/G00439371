@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon, IonButtons} from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon, IonButtons, IonText} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -13,8 +13,10 @@ import { NgIf, NgFor } from '@angular/common';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonSearchbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, NgIf, NgFor, FormsModule, RouterLink, IonIcon, IonButtons],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonSearchbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, NgIf, NgFor, FormsModule, RouterLink, IonIcon, IonButtons, IonText],
 })
+
+
 export class HomePage {
   searchQuery = '';
   results: RecipeSearchResult[] = [];

@@ -28,6 +28,10 @@
     Search
   </ion-button>
 
+  <ion-text color="medium" *ngIf="results.length === 0">
+  <p>No recipes found</p>
+</ion-text>
+
 
 <!--Search results --> 
   <div class="search-results" *ngIf="results.length > 0">
