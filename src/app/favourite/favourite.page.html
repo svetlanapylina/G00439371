@@ -34,6 +34,16 @@
       <ion-label>
         <h2>{{ fav.title }}</h2>
       </ion-label>
+
+      <ion-button
+        slot="end"
+        fill="clear"
+        color="danger"
+        (click)="removeFavourite(fav.id); $event.stopPropagation()"
+        aria-label="Remove from favourites"
+      >
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

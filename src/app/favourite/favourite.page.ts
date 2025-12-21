@@ -21,5 +21,11 @@ export class FavouritePage {
   async ionViewWillEnter(): Promise<void> {
     this.favourites = await this.favouritesService.getAll();
   }
+
+  async removeFavourite(id: number): Promise<void> {
+  await this.favouritesService.remove(id);
+  this.favourites = this.favourites.filter(f => f.id !== id);
+}
+  
 }
 
