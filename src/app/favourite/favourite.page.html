@@ -22,16 +22,15 @@
 
   <ion-list *ngIf="favourites.length > 0">
     <ion-item
-      *ngFor="let fav of favourites"
-      [routerLink]="['/recipe-details', fav.id]"
-      button
-      detail
-    >
-      <ion-thumbnail slot="start">
+      *ngFor="let fav of favourites" detail="false">
+       <ion-thumbnail
+        slot="start"
+        [routerLink]="['/recipe-details', fav.id]">
+
         <img [src]="fav.image" [alt]="fav.title" />
       </ion-thumbnail>
 
-      <ion-label>
+      <ion-label [routerLink]="['/recipe-details', fav.id]" class="clickable">
         <h2>{{ fav.title }}</h2>
       </ion-label>
 
@@ -39,7 +38,7 @@
         slot="end"
         fill="clear"
         color="danger"
-        (click)="removeFavourite(fav.id); $event.stopPropagation()"
+        (click)="onRemoveClick($event, fav.id)"
         aria-label="Remove from favourites"
       >
         <ion-icon name="trash"></ion-icon>

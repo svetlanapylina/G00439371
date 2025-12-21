@@ -22,6 +22,13 @@ export class FavouritePage {
     this.favourites = await this.favouritesService.getAll();
   }
 
+  async onRemoveClick(event: Event, id: number): Promise<void> {
+  event.preventDefault();
+  event.stopPropagation();
+
+  await this.removeFavourite(id);
+}
+
   async removeFavourite(id: number): Promise<void> {
   await this.favouritesService.remove(id);
   this.favourites = this.favourites.filter(f => f.id !== id);

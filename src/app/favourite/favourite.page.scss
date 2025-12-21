@@ -1,0 +1,7 @@
+.clickable {
+  cursor: pointer;
+}
+
+ion-label.clickable:hover h2 {
+  text-decoration: underline;
+}
