@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon, IonButtons, IonText} from '@ionic/angular/standalone';
-import { CommonModule } from '@angular/common';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonIcon, IonButtons, IonText} from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { RecipeService, RecipeSearchResult, } from '../services/recipe.service';
 import { NgIf, NgFor } from '@angular/common';
-
+import { RecipeCardComponent } from '../shared/components/recipe-card/recipe-card.component';
 
 
 @Component({
@@ -13,7 +12,7 @@ import { NgIf, NgFor } from '@angular/common';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonSearchbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, NgIf, NgFor, FormsModule, RouterLink, IonIcon, IonButtons, IonText],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonSearchbar, NgIf, NgFor, FormsModule, RouterLink, IonIcon, IonButtons, IonText, RecipeCardComponent],
 })
 
 
@@ -25,7 +24,7 @@ export class HomePage {
 
  constructor(private recipeService: RecipeService) {}
 
-  onSearch() {
+  async onSearch() {
     const query = this.searchQuery.trim();
 
     if (!query) {
@@ -34,16 +33,13 @@ export class HomePage {
       return;
     }
 
-    this.recipeService.searchRecipes(query).subscribe({
-      next: (recipes) => {
-        this.results = recipes;
-        this.hasSearched = true;
-      },
-      error: (err) => {
-        console.error('Error searching recipes', err);
-        this.results = [];
-        this.hasSearched = true;
-      },
-    });
+    try {
+    this.results = await this.recipeService.searchRecipes(query);
+  } catch (err) {
+    console.error('Error searching recipes', err);
+    this.results = [];
+  } finally {
+    this.hasSearched = true;
   }
+}
 }

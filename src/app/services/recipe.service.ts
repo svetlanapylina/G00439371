@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { CapacitorHttp, HttpOptions } from '@capacitor/core';
 import { environment } from '../../environments/environment';
 
 export interface RecipeSearchResult {
@@ -53,32 +51,42 @@ export class RecipeService {
   private readonly apiKey = environment.spoonacularApiKey;
   private readonly apiRecipeDetailsUrl = environment.spoonacularRecipeDetailsUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  searchRecipes(query: string): Observable<RecipeSearchResult[]> {
+  async searchRecipes(query: string): Promise<RecipeSearchResult[]> {
     const trimmed = query.trim();
-    if (!trimmed) return of([]);
+    if (!trimmed) return [];
 
-    const params = new HttpParams()
-      .set('apiKey', this.apiKey)
-      .set('query', trimmed)
-      .set('number', 10)
-      .set('addRecipeInformation', true)
-      .set('instructionsRequired', true);
+    const options: HttpOptions = {
+      url: this.apiUrl,
+      method: 'GET',
+      params: {
+        apiKey: this.apiKey,
+        query: trimmed,
+        number: '10',
+        addRecipeInformation: 'true',
+        instructionsRequired: 'true',
+      },
+    };
 
-    return this.http
-      .get<SpoonacularSearchResponse>(this.apiUrl, { params })
-      .pipe(map(res => res.results));
+    const res = await CapacitorHttp.request(options);
+    const data = res.data as SpoonacularSearchResponse;
+    return data.results ?? [];
   }
 
-  getRecipeDetails(id: number): Observable<RecipeDetails> {
-    const url = `${this.apiRecipeDetailsUrl}/${id}/information`
+  async getRecipeDetails(id: number): Promise<RecipeDetails> {
+    const url = `${this.apiRecipeDetailsUrl}/${id}/information`;
 
-    const params = new HttpParams()
-    .set('apiKey', this.apiKey)
-    .set('includeNutrition', false);
+    const options: HttpOptions = {
+      url,
+      method: 'GET',
+      params: {
+        apiKey: this.apiKey,
+        includeNutrition: 'false',
+      },
+    };
 
-  return this.http.get<RecipeDetails>(url, { params });
-}
-
+    const res = await CapacitorHttp.request(options);
+    return res.data as RecipeDetails;
+  }
 }

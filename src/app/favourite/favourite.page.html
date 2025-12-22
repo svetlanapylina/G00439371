@@ -20,29 +20,16 @@
     No favourites yet.
   </p>
 
-  <ion-list *ngIf="favourites.length > 0">
-    <ion-item
-      *ngFor="let fav of favourites" detail="false">
-       <ion-thumbnail
-        slot="start"
-        [routerLink]="['/recipe-details', fav.id]">
+  <div class="search-results" *ngIf="favourites.length > 0">
+    <app-recipe-card
+      *ngFor="let fav of favourites"
+      [id]="fav.id"
+      [title]="fav.title"
+      [image]="fav.image"
+      [showRemove]="true"
+      detailsLabel="DETAILS"
+      (remove)="removeFavourite($event)"
+    />
+  </div>
 
-        <img [src]="fav.image" [alt]="fav.title" />
-      </ion-thumbnail>
-
-      <ion-label [routerLink]="['/recipe-details', fav.id]" class="clickable">
-        <h2>{{ fav.title }}</h2>
-      </ion-label>
-
-      <ion-button
-        slot="end"
-        fill="clear"
-        color="danger"
-        (click)="onRemoveClick($event, fav.id)"
-        aria-label="Remove from favourites"
-      >
-        <ion-icon name="trash"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-list>
 </ion-content>

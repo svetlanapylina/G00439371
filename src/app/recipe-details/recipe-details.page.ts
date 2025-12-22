@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, IonButtons, IonIcon,} from '@ionic/angular/standalone';
 import { RecipeService, RecipeDetails, RecipeIngredient, RecipeStep, } from '../services/recipe.service';
 import { FavouritesService } from '../services/favourite.service';
 import { SettingsService, UnitSystem } from '../services/settings.service';
-import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -38,10 +37,14 @@ export class RecipeDetailsPage implements OnInit {
     if (!idParam) return;
 
     const id = Number(idParam);
-    this.recipeService.getRecipeDetails(id).subscribe(async (details) => {
-      this.recipe = details;
+
+    try {
+      this.recipe = await this.recipeService.getRecipeDetails(id);
       this.isFavourite = await this.favouritesService.isFavourite(id);
-    });
+    } catch (err) {
+      console.error('Error loading recipe details', err);
+      this.recipe = null;
+    }
   }
 
   async onToggleFavourite(): Promise<void> {

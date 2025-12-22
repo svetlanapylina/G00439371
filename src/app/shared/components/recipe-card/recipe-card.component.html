@@ -1,0 +1,23 @@
+<ion-card class="recipe-card">
+  <img [src]="image" [alt]="title" class="recipe-image" />
+
+  <ion-card-header>
+    <ion-card-title>{{ title }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content class="card-actions">
+    <ion-button size="small" [routerLink]="['/recipe-details', id]">
+      {{ detailsLabel }}
+    </ion-button>
+
+    <ion-button
+      *ngIf="showRemove"
+      fill="clear"
+      color="danger"
+      aria-label="Remove from favourites"
+      (click)="onRemoveClick($event)"
+    >
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-card-content>
+</ion-card>

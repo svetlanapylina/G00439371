@@ -35,26 +35,13 @@
 
 <!--Search results --> 
   <div class="search-results" *ngIf="results.length > 0">
-  <ion-card
-    class="recipe-card"
-    *ngFor="let recipe of results"
-  >
-    <img src="{{ recipe.image }}" alt="{{ recipe.title }}" class="recipe-image" />
-
-   <ion-card-header>
-        <ion-card-title>{{ recipe.title }}</ion-card-title>
-      </ion-card-header>
-
-   <ion-card-content>
-      <ion-button
-        size="small"
-        [routerLink]="['/recipe-details', recipe.id]"
-      >
-        DETAILS
-      </ion-button>
-    </ion-card-content>
-
-  </ion-card>
+    <app-recipe-card
+      *ngFor="let recipe of results"
+      [id]="recipe.id"
+      [title]="recipe.title"
+      [image]="recipe.image"
+      detailsLabel="DETAILS"
+    />
 </div>
 
 
