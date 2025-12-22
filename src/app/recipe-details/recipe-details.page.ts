@@ -6,8 +6,6 @@ import { RecipeService, RecipeDetails, RecipeIngredient, RecipeStep, } from '../
 import { FavouritesService } from '../services/favourite.service';
 import { SettingsService, UnitSystem } from '../services/settings.service';
 import { RouterLink } from '@angular/router';
-import { home } from 'ionicons/icons';
-
 
 
 @Component({
@@ -20,7 +18,6 @@ import { home } from 'ionicons/icons';
 
 
 export class RecipeDetailsPage implements OnInit {
-  homeIcon = home;
   recipe: RecipeDetails | null = null;
   isFavourite = false;
   unitSystem: UnitSystem = 'metric';

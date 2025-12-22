@@ -50,6 +50,7 @@ export class FavouritesService {
     await store.set(STORAGE_KEY, updated);
   }
 
+
   async toggle(recipe: { id: number; title: string; image: string }): Promise<boolean> {
     const fav = await this.isFavourite(recipe.id);
     if (fav) {
