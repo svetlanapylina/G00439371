@@ -12,14 +12,14 @@ export const routes: Routes = [
   },
   {
     path: 'recipe-details/:id',
-    loadComponent: () => import('./recipe-details/recipe-details.page').then( m => m.RecipeDetailsPage)
+    loadComponent: () => import('./recipe-details/recipe-details.page').then(m => m.RecipeDetailsPage)
   },
   {
     path: 'favourite',
-    loadComponent: () => import('./favourite/favourite.page').then( m => m.FavouritePage)
+    loadComponent: () => import('./favourite/favourite.page').then(m => m.FavouritePage)
   },
   {
     path: 'settings',
-    loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage)
+    loadComponent: () => import('./settings/settings.page').then(m => m.SettingsPage)
   },
 ];

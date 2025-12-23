@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonIcon, IonButtons, IonText} from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonIcon, IonButtons, IonText } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { RecipeService, RecipeSearchResult, } from '../services/recipe.service';
@@ -22,7 +22,7 @@ export class HomePage {
   hasSearched = false;
 
 
- constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeService) { }
 
   async onSearch() {
     const query = this.searchQuery.trim();
@@ -34,14 +34,14 @@ export class HomePage {
     }
 
     try {
-    this.results = await this.recipeService.searchRecipes(query);
-  } catch (err) {
-    console.error('Error searching recipes', err);
-    this.results = [];
-  } finally {
-    this.hasSearched = true;
+      this.results = await this.recipeService.searchRecipes(query);
+    } catch (err) {
+      console.error('Error searching recipes', err);
+      this.results = [];
+    } finally {
+      this.hasSearched = true;
+    }
   }
-}
 
   onClearSearch() {
     this.searchQuery = '';

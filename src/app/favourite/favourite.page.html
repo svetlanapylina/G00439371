@@ -3,14 +3,14 @@
     <ion-title>Favourite recipes</ion-title>
 
     <ion-buttons slot="end">
-    <ion-button routerLink="/home">
-      <ion-icon name="home"></ion-icon>
-    </ion-button>
+      <ion-button routerLink="/home">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
 
-    <ion-button routerLink="/settings">
-    <ion-icon name="settings"></ion-icon>
-  </ion-button>
-  </ion-buttons>
+      <ion-button routerLink="/settings">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
 
   </ion-toolbar>
 </ion-header>
@@ -21,15 +21,8 @@
   </p>
 
   <div class="search-results" *ngIf="favourites.length > 0">
-    <app-recipe-card
-      *ngFor="let fav of favourites"
-      [id]="fav.id"
-      [title]="fav.title"
-      [image]="fav.image"
-      [showRemove]="true"
-      detailsLabel="DETAILS"
-      (remove)="removeFavourite($event)"
-    />
+    <app-recipe-card *ngFor="let fav of favourites" [id]="fav.id" [title]="fav.title" [image]="fav.image"
+      [showRemove]="true" detailsLabel="DETAILS" (remove)="removeFavourite($event)" />
   </div>
 
 </ion-content>

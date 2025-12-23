@@ -6,53 +6,44 @@
 
     <ion-buttons slot="end">
 
-  <ion-button routerLink="/favourite">
-    <ion-icon name="heart"></ion-icon>
-  </ion-button>
+      <ion-button routerLink="/favourite">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
 
-  <ion-button routerLink="/settings">
-    <ion-icon name="settings"></ion-icon>
-  </ion-button>
-</ion-buttons>
+      <ion-button routerLink="/settings">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
 
- <div class="search-row">
-    <ion-searchbar
-      [(ngModel)]="searchQuery"
-      placeholder="Enter ingredients">
+  <div class="search-row">
+    <ion-searchbar [(ngModel)]="searchQuery" placeholder="Enter ingredients"> 
     </ion-searchbar>
 
-     <ion-button
-    fill="outline"
-    (click)="onClearSearch()"
-    [disabled]="!searchQuery && results.length === 0 && !hasSearched"
-  >
-    Clear
-  </ion-button>
-</div>
+    <ion-button fill="outline" (click)="onClearSearch()"
+      [disabled]="!searchQuery && results.length === 0 && !hasSearched">
+      Clear search results
+    </ion-button>
+  </div>
 
   <ion-button expand="block" (click)="onSearch()">
     Search
   </ion-button>
 
   <ion-text color="medium" *ngIf="hasSearched && results.length === 0">
-  <p>No recipes found</p>
-</ion-text>
+    <p>No recipes found</p>
+  </ion-text>
 
 
-<!--Search results --> 
+  <!--Search results -->
   <div class="search-results" *ngIf="results.length > 0">
-    <app-recipe-card
-      *ngFor="let recipe of results"
-      [id]="recipe.id"
-      [title]="recipe.title"
-      [image]="recipe.image"
-      detailsLabel="DETAILS"
-    />
-</div>
+    <app-recipe-card *ngFor="let recipe of results" [id]="recipe.id" [title]="recipe.title" [image]="recipe.image"
+      detailsLabel="DETAILS">
+    </app-recipe-card>
+  </div>
 
 
 </ion-content>

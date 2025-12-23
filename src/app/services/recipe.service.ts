@@ -22,8 +22,8 @@ export interface IngredientMeasure {
 
 export interface RecipeIngredient {
   id: number;
-  original: string;    
-  image: string;       
+  original: string;
+  image: string;
   measures: {
     us: IngredientMeasure;
     metric: IngredientMeasure;
@@ -51,7 +51,7 @@ export class RecipeService {
   private readonly apiKey = environment.spoonacularApiKey;
   private readonly apiRecipeDetailsUrl = environment.spoonacularRecipeDetailsUrl;
 
-  constructor() {}
+  constructor() { }
 
   async searchRecipes(query: string): Promise<RecipeSearchResult[]> {
     const trimmed = query.trim();

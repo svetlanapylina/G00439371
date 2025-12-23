@@ -10,13 +10,8 @@
       {{ detailsLabel }}
     </ion-button>
 
-    <ion-button
-      *ngIf="showRemove"
-      fill="clear"
-      color="danger"
-      aria-label="Remove from favourites"
-      (click)="onRemoveClick($event)"
-    >
+    <ion-button *ngIf="showRemove" fill="clear" color="danger" aria-label="Remove from favourites"
+      (click)="onRemoveClick($event)">
       <ion-icon name="trash"></ion-icon>
     </ion-button>
   </ion-card-content>

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon, } from '@ionic/angular/standalone';
 import { FavouritesService, FavouriteRecipe } from '../services/favourite.service';
 import { RouterLink } from '@angular/router';
@@ -11,13 +10,13 @@ import { RecipeCardComponent } from '../shared/components/recipe-card/recipe-car
   templateUrl: './favourite.page.html',
   styleUrls: ['./favourite.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink, IonButtons, IonButton, IonIcon, RecipeCardComponent]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, RouterLink, IonButtons, IonButton, IonIcon, RecipeCardComponent]
 })
 
 export class FavouritePage {
   favourites: FavouriteRecipe[] = [];
 
-  constructor(private favouritesService: FavouritesService) {}
+  constructor(private favouritesService: FavouritesService) { }
 
   async ionViewWillEnter(): Promise<void> {
     this.favourites = await this.favouritesService.getAll();
@@ -25,9 +24,7 @@ export class FavouritePage {
 
 
   async removeFavourite(id: number): Promise<void> {
-  await this.favouritesService.remove(id);
-  this.favourites = this.favourites.filter(f => f.id !== id);
+    await this.favouritesService.remove(id);
+    this.favourites = this.favourites.filter(f => f.id !== id);
+  }
 }
-  
-}
-

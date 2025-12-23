@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, IonButtons, IonIcon,} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, IonButtons, IonIcon, } from '@ionic/angular/standalone';
 import { RecipeService, RecipeDetails, RecipeIngredient, RecipeStep, } from '../services/recipe.service';
 import { FavouritesService } from '../services/favourite.service';
 import { SettingsService, UnitSystem } from '../services/settings.service';
@@ -12,7 +12,7 @@ import { SettingsService, UnitSystem } from '../services/settings.service';
   templateUrl: './recipe-details.page.html',
   styleUrls: ['./recipe-details.page.scss'],
   standalone: true,
-  imports: [NgIf, NgFor, IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton,IonButtons, IonIcon, RouterLink, ]
+  imports: [NgIf, NgFor, IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, IonButtons, IonIcon, RouterLink,]
 })
 
 
@@ -27,7 +27,7 @@ export class RecipeDetailsPage implements OnInit {
     private recipeService: RecipeService,
     private favouritesService: FavouritesService,
     private settingsService: SettingsService
-  ) {}
+  ) { }
 
 
   async ngOnInit(): Promise<void> {
@@ -68,11 +68,9 @@ export class RecipeDetailsPage implements OnInit {
     return this.recipe.analyzedInstructions[0].steps || [];
   }
 
-  getIngredientAmountText(ing: any): string {
+  getIngredientAmountText(ing: RecipeIngredient): string {
     const m = this.unitSystem === 'us' ? ing.measures?.us : ing.measures?.metric;
     if (!m) return '';
     return `${m.amount} ${m.unitLong}`;
   }
-
-
 }

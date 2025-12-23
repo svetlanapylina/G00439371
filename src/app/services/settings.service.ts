@@ -10,7 +10,7 @@ const STORAGE_KEY_UNITS = 'unitSystem';
 export class SettingsService {
   private _storage!: Storage;
 
-  constructor(private storage: Storage) {}
+  constructor(private storage: Storage) { }
 
   private async ready(): Promise<Storage> {
     if (this._storage) return this._storage;

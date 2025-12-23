@@ -13,7 +13,7 @@ const STORAGE_KEY = 'favouriteRecipes';
 export class FavouritesService {
   private _storage!: Storage;
 
-  constructor(private storage: Storage) {}
+  constructor(private storage: Storage) { }
 
   private async ready(): Promise<Storage> {
     if (this._storage) return this._storage;
@@ -33,14 +33,14 @@ export class FavouritesService {
   }
 
   async add(recipe: FavouriteRecipe): Promise<void> {
-  const all = await this.getAll();
-  if (all.some(r => r.id === recipe.id)) return;
+    const all = await this.getAll();
+    if (all.some(r => r.id === recipe.id)) return;
 
-  const updated: FavouriteRecipe[] = [recipe, ...all];
+    const updated: FavouriteRecipe[] = [recipe, ...all];
 
-  const store = await this.ready();
-  await store.set(STORAGE_KEY, updated);
-}
+    const store = await this.ready();
+    await store.set(STORAGE_KEY, updated);
+  }
 
   async remove(id: number): Promise<void> {
     const all = await this.getAll();

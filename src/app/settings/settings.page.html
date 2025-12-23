@@ -3,14 +3,14 @@
     <ion-title>Settings</ion-title>
 
     <ion-buttons slot="end">
-    <ion-button routerLink="/home">
-      <ion-icon name="home"></ion-icon>
-    </ion-button>
+      <ion-button routerLink="/home">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
 
-    <ion-button routerLink="/favourite">
-    <ion-icon name="heart"></ion-icon>
-  </ion-button>
-  </ion-buttons>
+      <ion-button routerLink="/favourite">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -19,29 +19,26 @@
 
   <h2 class="settings-title">Display Recipe Measurements In:</h2>
 
- <ion-list>
-  <ion-radio-group
-    [value]="unitSystem"
-    (ionChange)="onUnitChange($event)"
-  >
-    <ion-item lines="none">
-      <ion-label>
-        <div class="radio-inline">
-          <span>Metric</span>
-          <ion-radio value="metric"></ion-radio>
-        </div>
-      </ion-label>
-    </ion-item>
+  <ion-list>
+    <ion-radio-group [value]="unitSystem" (ionChange)="onUnitChange($event)">
+      <ion-item lines="none">
+        <ion-label>
+          <div class="radio-inline">
+            <span>Metric</span>
+            <ion-radio value="metric"></ion-radio>
+          </div>
+        </ion-label>
+      </ion-item>
 
-    <ion-item lines="none">
-      <ion-label>
-        <div class="radio-inline">
-          <span>US</span>
-          <ion-radio value="us"></ion-radio>
-        </div>
-      </ion-label>
-    </ion-item>
-  </ion-radio-group>
-</ion-list>
+      <ion-item lines="none">
+        <ion-label>
+          <div class="radio-inline">
+            <span>US</span>
+            <ion-radio value="us"></ion-radio>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
 
 </ion-content>

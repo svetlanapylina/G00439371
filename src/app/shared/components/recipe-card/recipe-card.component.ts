@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon} from '@ionic/angular/standalone';
+import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { NgIf } from '@angular/common';
 
 @Component({
