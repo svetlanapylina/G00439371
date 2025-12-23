@@ -42,4 +42,10 @@ export class HomePage {
     this.hasSearched = true;
   }
 }
+
+  onClearSearch() {
+    this.searchQuery = '';
+    this.results = [];
+    this.hasSearched = false;
+  }
 }

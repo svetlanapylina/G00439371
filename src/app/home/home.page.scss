@@ -4,3 +4,13 @@
   width: 100%;
   padding: 0;        
 }
+
+.search-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.search-row ion-searchbar {
+  flex: 1;
+}

@@ -19,10 +19,20 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
 
- <ion-searchbar
-    [(ngModel)]="searchQuery"
-    placeholder="Enter ingredients">
-  </ion-searchbar>
+ <div class="search-row">
+    <ion-searchbar
+      [(ngModel)]="searchQuery"
+      placeholder="Enter ingredients">
+    </ion-searchbar>
+
+     <ion-button
+    fill="outline"
+    (click)="onClearSearch()"
+    [disabled]="!searchQuery && results.length === 0 && !hasSearched"
+  >
+    Clear
+  </ion-button>
+</div>
 
   <ion-button expand="block" (click)="onSearch()">
     Search
