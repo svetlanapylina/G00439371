@@ -20,7 +20,7 @@
 <ion-content [fullscreen]="true" class="ion-padding">
 
   <div class="search-row">
-    <ion-searchbar [(ngModel)]="searchQuery" placeholder="Enter ingredients"> 
+    <ion-searchbar [(ngModel)]="searchQuery" placeholder="Enter ingredients">
     </ion-searchbar>
 
     <ion-button fill="outline" (click)="onClearSearch()"
@@ -29,16 +29,18 @@
     </ion-button>
   </div>
 
-  <ion-button expand="block" (click)="onSearch()">
+  <ion-button expand="block" (click)="onSearch()" [disabled]="!searchQuery.trim()">
     Search
   </ion-button>
 
-  <ion-text color="medium" *ngIf="hasSearched && results.length === 0">
+  <ion-text color="danger" *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </ion-text>
+
+  <ion-text color="medium" *ngIf="!errorMessage && hasSearched && results.length === 0">
     <p>No recipes found</p>
   </ion-text>
 
-
-  <!--Search results -->
   <div class="search-results" *ngIf="results.length > 0">
     <app-recipe-card *ngFor="let recipe of results" [id]="recipe.id" [title]="recipe.title" [image]="recipe.image"
       detailsLabel="DETAILS">

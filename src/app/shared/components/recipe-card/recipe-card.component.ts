@@ -14,11 +14,7 @@ export class RecipeCardComponent {
   @Input() id!: number;
   @Input() title = '';
   @Input() image = '';
-
-  // Show remove icon (used on Favourites)
   @Input() showRemove = false;
-
-  // Optional label for the details button
   @Input() detailsLabel = 'DETAILS';
 
   @Output() remove = new EventEmitter<number>();

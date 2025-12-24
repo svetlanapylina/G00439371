@@ -20,12 +20,14 @@ export class HomePage {
   searchQuery = '';
   results: RecipeSearchResult[] = [];
   hasSearched = false;
+  errorMessage: string | null = null;
 
 
   constructor(private recipeService: RecipeService) { }
 
   async onSearch() {
     const query = this.searchQuery.trim();
+    this.errorMessage = null;
 
     if (!query) {
       this.results = [];
@@ -38,6 +40,7 @@ export class HomePage {
     } catch (err) {
       console.error('Error searching recipes', err);
       this.results = [];
+      this.errorMessage = 'Cannot load recipes. Please try again.';
     } finally {
       this.hasSearched = true;
     }
@@ -47,5 +50,6 @@ export class HomePage {
     this.searchQuery = '';
     this.results = [];
     this.hasSearched = false;
+    this.errorMessage = null;
   }
 }

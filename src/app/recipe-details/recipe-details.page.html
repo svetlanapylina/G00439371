@@ -21,8 +21,12 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
 
+  <ion-text color="danger" *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </ion-text>
 
-  <ng-container *ngIf="recipe">
+
+  <ng-container *ngIf="!errorMessage && recipe">
 
     <ion-card>
       <img class="recipe-img" [src]="recipe.image" [alt]="recipe.title" />
