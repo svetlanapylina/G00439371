@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon, } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { FavouritesService, FavouriteRecipe } from '../services/favourite.service';
 import { RouterLink } from '@angular/router';
 import { RecipeCardComponent } from '../shared/components/recipe-card/recipe-card.component';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, IonButtons, IonIcon, IonText } from '@ionic/angular/standalone';
-import { RecipeService, RecipeDetails, RecipeIngredient, RecipeStep, } from '../services/recipe.service';
+import { RecipeService, RecipeDetails, RecipeIngredient, RecipeStep } from '../services/recipe.service';
 import { FavouritesService } from '../services/favourite.service';
 import { SettingsService, UnitSystem } from '../services/settings.service';
 
@@ -12,7 +12,7 @@ import { SettingsService, UnitSystem } from '../services/settings.service';
   templateUrl: './recipe-details.page.html',
   styleUrls: ['./recipe-details.page.scss'],
   standalone: true,
-  imports: [NgIf, NgFor, IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, IonButtons, IonIcon, IonText, RouterLink,]
+  imports: [NgIf, NgFor, IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel, IonButton, IonButtons, IonIcon, IonText, RouterLink ]
 })
 
 

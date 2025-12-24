@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonButtons, IonButton, IonIcon, IonRadio, IonRadioGroup, IonList, } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonButtons, IonButton, IonIcon, IonRadio, IonRadioGroup, IonList } from '@ionic/angular/standalone';
 import { SettingsService, UnitSystem } from '../services/settings.service';
 import { RouterLink } from '@angular/router';
 
