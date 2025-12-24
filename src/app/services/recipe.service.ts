@@ -63,7 +63,7 @@ export class RecipeService {
       params: {
         apiKey: this.apiKey,
         query: trimmed,
-        number: '10',
+        number: '100',
         addRecipeInformation: 'true',
         instructionsRequired: 'true',
       },
