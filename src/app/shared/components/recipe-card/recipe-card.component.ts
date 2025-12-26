@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon } from '@ionic/angular/standalone';
+import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-card',
   standalone: true,
-  imports: [IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon, RouterLink, NgIf],
+  imports: [IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon, RouterLink, NgIf, IonLabel],
   templateUrl: './recipe-card.component.html',
   styleUrls: ['./recipe-card.component.scss'],
 })

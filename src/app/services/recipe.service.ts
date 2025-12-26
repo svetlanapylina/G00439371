@@ -63,7 +63,7 @@ export class RecipeService {
       params: {
         apiKey: this.apiKey,
         query: trimmed,
-       // number: '100',
+       number: '100',
       },
     };
 
